@@ -65,18 +65,17 @@ model = genai.GenerativeModel(model_name="gemini-2.5-pro",
 
 # Set the page confirmation
 
-st.set_page_config(page_title="VitalImage Analytics", page_icon=":robot")
+st.set_page_config(page_title="VitalImage Analytics", page_icon=":robot", layout="wide")
 
 #set the logo
-st.image(r"C:\Users\ashir\Downloads\MA_logo.png", width=150)
+st.image(r"C:\Users\ashir\Pictures\download.png", width=200)
 
 #set the title
-
-st.title("Vital Image Analytics")
+st.markdown("<h1 style='text-align: center; color: #00BFFF;'>Vital Image Analytics</h1>", unsafe_allow_html=True)
 
 # Set the subtitle
 
-st.subheader("An application that can help users to identify medical images")
+st.markdown("<h3 style='text-align: center;'>An application that can help users to identify medical images</h3>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Upload the medical image for analysis", type=["jpg", "jpeg", "png"])
 if uploaded_file:
     st.image(uploaded_file, width=300, caption="Uploaded Medical Image")
@@ -102,5 +101,5 @@ if submit_button:
     #generate the response based on prompt and image
     response = model.generate_content(prompt_parts)
     if response:
-        st.title("Here is the analysis based on your image: ")
-        st.write(response.text)
+        st.markdown("<h2 style='text-align: center;'>Here is the analysis based on your image:</h2>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align: justify;'>{response.text}</div>", unsafe_allow_html=True)
